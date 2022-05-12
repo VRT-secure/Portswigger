@@ -15,6 +15,7 @@ def send_request(operator: str, simbol: str, n_sim_of_pass) -> bool:
 
             csrfToken = soup.find('input',attrs = {'name':'csrf'})['value']
             login_data['csrf'] = csrfToken
+            
             r = s.post(url, data=login_data, headers=headers, cookies=cookies)
             soup = BeautifulSoup(r.content, 'html.parser')
             html_unswer = soup.prettify()

